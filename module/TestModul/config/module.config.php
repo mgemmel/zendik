@@ -1,26 +1,29 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
+
 
 namespace TestModul;
 
+use TestModul\Controller\ContactControllerFactory;
+use TestModul\Controller\ContactController;
+use TestModul\Controller\TestModulController;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
+use TestModul\Service\CurrencyConverter;
+use TestModul\Form\ContactForm;
+
 
 return [
     'controllers' => [
         'factories' => [
-            Controller\TestModulController::class => InvokableFactory::class,
-            Controller\ContactController::class => InvokableFactory::class,
+            TestModulController::class => InvokableFactory::class,
+            ContactController::class => ContactControllerFactory::class,
         ],
     ],
     'service_manager'=>[
         'factories' => [
-            Service\CurrencyConverter::class => InvokableFactory::class,
+            CurrencyConverter::class => InvokableFactory::class,
+            Contactform::class=>InvokableFactory::class,
         ]
     ],
 
