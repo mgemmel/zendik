@@ -1,0 +1,19 @@
+<h1>Pridanie</h1>
+<div class="jumbotron">
+    <?php
+    $form = $this->form;
+    //echo $this->formCollection($form);
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+    echo $this->formRow($form->get('id')) . '<br>';
+    echo $this->formRow($form->get('nazov')) . '<br>';
+    echo $this->formRow($form->get('autor')) . '<br>';
+    echo $this->formRow($form->get('datum')) . '<br>';
+    echo $this->formRow($form->get('popis')) . '<br>';
+    echo $this->formRow($form->get('cena')) . '<br>';
+    echo $this->formRow($form->get('select')) . '<br>';
+    echo $this->formRow($form->get('submit'));
+    echo $this->form()->closeTag();
+    ?>
+</div>

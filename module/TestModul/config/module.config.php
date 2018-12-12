@@ -3,9 +3,12 @@
 
 namespace TestModul;
 
+use TestModul\Controller\BookController;
 use TestModul\Controller\ContactControllerFactory;
+use TestModul\Controller\BookControllerFactory;
 use TestModul\Controller\ContactController;
 use TestModul\Controller\TestModulController;
+use TestModul\Form\BookForm;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -18,12 +21,14 @@ return [
         'factories' => [
             TestModulController::class => InvokableFactory::class,
             ContactController::class => ContactControllerFactory::class,
+            BookController::class=>BookControllerFactory::class
         ],
     ],
     'service_manager'=>[
         'factories' => [
             CurrencyConverter::class => InvokableFactory::class,
             Contactform::class=>InvokableFactory::class,
+            BookForm::class=>InvokableFactory::class
         ]
     ],
 
@@ -53,6 +58,20 @@ return [
                     ],
                     'defaults' => [
                         'controller' => Controller\ContactController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'book' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/book[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\BookController::class,
                         'action'     => 'index',
                     ],
                 ],

@@ -15,7 +15,7 @@ class ContactController extends AbstractActionController
 
     protected $converter;
     protected $form;
-    public function __construct($converter,ContactForm $form)
+    public function __construct(CurrencyConverter $converter,ContactForm $form)
     {
         $this->form=$form;
         $this->converter=$converter;
@@ -27,7 +27,7 @@ class ContactController extends AbstractActionController
 
     public function indexAction()
     {
-        $meno = "majo";
+        $meno = 'majo';
 
         return new ViewModel(["meno" => $meno]);
     }
@@ -64,7 +64,7 @@ class ContactController extends AbstractActionController
         //$service = $serviceManager->get(CurrencyConverter::class);
         //$convertedAmount = $service->convertEURtoUSD(50);
 
-        return new ViewModel(["converter" => $this->converter->convertEURtoUSD(50)]);
+        return new ViewModel(["converter" => $this->converter->convertEURtoUSD(50),"meno"=>'Majo']);
     }
 
 }
