@@ -44,7 +44,6 @@ class BookForm extends Form
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
                             'useMxCheck' => false,
                             'min' => 1,
                             'max' => 150
@@ -64,7 +63,6 @@ class BookForm extends Form
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
                             'useMxCheck' => false,
                             'min' => 1,
                             'max' => 100
@@ -88,8 +86,8 @@ class BookForm extends Form
                     [
                         'name' => 'StringLength',
                         'options' => [
-                            'min' => 1,
-                            'max' => 500
+                            'min' => 0,
+                            'max' => 100
                         ],
                     ],
                 ],
@@ -150,7 +148,7 @@ class BookForm extends Form
             'name' => 'autor',
             'attributes' => [
                 'id' => 'autor',
-                'max' => '2018-12-31'
+
             ],
             'options' => [
                 'label' => 'Autor',
@@ -160,7 +158,8 @@ class BookForm extends Form
             'type' => 'date',
             'name' => 'datum',
             'attributes' => [
-                'id' => 'datum'
+                'id' => 'datum',
+                'max' => '2018-12-31'
             ],
             'options' => [
                 'label' => 'Dátum vydania',
@@ -196,10 +195,10 @@ class BookForm extends Form
             'options' => [
                 'label' => 'Kategória',
                 'value_options' => array(
-                    '0' => 'Román',
-                    '1' => 'Sci-Fi',
-                    '2' => 'Rozprávka',
-                    '3' => 'Dokument',
+                    'Román' => 'Román',
+                    'Sci-Fi' => 'Sci-Fi',
+                    'Rozprávka' => 'Rozprávka',
+                    'Dokument' => 'Dokument',
                 )
             ],
         ]);
